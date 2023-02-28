@@ -40,16 +40,37 @@ namespace DataAccess.Service
             return result;
         }
 
-        public async Task UpdateAsync(T entity, int id)
+        public async Task<T> UpdateAsync(T entity)
         {
             EntityEntry entityEntry = _dbContext.Entry<T>(entity);
             EntityState entityState = entityEntry.State;
+            return entity;
         }
+
+        public async Task<T> UpdateByIdAsync(int id)
+        {
+            var result = new T();
+            var model = _dbSet.FindAsync(id);
+            if (model == null)
+            {
+                return null;
+            }
+            var response = _dbContext.Entry(model);
+            EntityState entityState = response.State;
+            return result;
+        }
+        
 
         public async Task DeleteAsync(int id)
         {
             var entity = await _dbContext.Set<T>().FindAsync(id);
             _dbContext.Set<T>().Remove(entity);
+        }
+
+        public async Task<int> Save()
+        {
+            return await _dbContext.SaveChangesAsync();
+
         }
     }
 }

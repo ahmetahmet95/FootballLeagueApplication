@@ -1,4 +1,6 @@
 using DataAccess.Interface;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ModelsLibrary.Models;
 
@@ -15,6 +17,15 @@ namespace FootballLeagueWebApi.Controllers
             _repository = repository;
         }
 
+        [HttpPost]
+        [Route("CreateTeam")]
+        public async Task<Teams> CreateTeam([FromBody] Teams model)
+        {
+            var result = await _repository.CreateAsync(model);
+            await _repository.Save();
+            return null;
+        }
+
         [HttpGet]
         [Route("GetTeams")]
         public async Task<IEnumerable<Teams>> GetTeams()
@@ -23,12 +34,22 @@ namespace FootballLeagueWebApi.Controllers
             return result;
         }
 
-        [HttpPost]
-        [Route("CreateTeams")]
-        public async Task<Teams> CreateTeams([FromBody] Teams model)
+        [HttpGet]
+        [Route("GetTeamById/{id}")]
+        public async Task<Teams> GetTeamById(int id)
         {
-            var result = await _repository.CreateAsync(model);
+            var result = await _repository.GetByIdAsync(id);
             return result;
         }
+
+        [HttpPut]
+        [Route("UpdateTeamById/{id}")]
+        public async Task<Teams> UpdateTeamById(int id)
+        {
+            var result = await _repository.UpdateAsync(model);
+            await _repository.Save();
+            return result;
+        }
+
     }
 }

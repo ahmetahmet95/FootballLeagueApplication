@@ -35,11 +35,35 @@
             window.open("/Home/TeamsDetail");
         });
     }
-    
+
+    function onEdit(id){
+
+        window.open("/Home/TeamsDetail?id=" + id);
+    }
+
+    function onDelete() {
+
+        $.ajax({
+            url: "https://localhost:7066/api/TeamsApi/CreateTeam",
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            data: jsonData,
+            success: function (res) {
+                window.close();
+                window.open("/Home/Teams");
+            },
+            error: function (e) {
+            }
+        });
+    }
+
     return {
         init: function () {
             pageInit();
-        }
+        },
+        onEdit: onEdit,
+        onDelete: onDelete
     }
 
 }();

@@ -1,44 +1,88 @@
 ﻿var scriptApp = function () {
 
-    function pageInit() {
+    function pageInit(options) {
 
+        if (options.teamId != 0) {
 
-
-        $("#canceBtn").click(function () {
-
-            window.close()  
-
-        });
+            onLoad(options);
+        }
 
         $("#createBtn").click(function () {
 
-            var obj = {
-                Name: $("#fname").val()
-            }
+            if (options.teamId == 0) {
 
-            $.ajax({
-                url: "https://localhost:7066/api/TeamsApi/CreateTeams",
-                type: 'POST',
-                dataType: 'json',
-                contentType: "application/json;charset=utf-8",
-                data: obj,
-                success: function (res) {
-
-                },
-                error: function (e) {
+                //Create
+                var data = {
+                    Id: 0,
+                    Name: $("#name").val(),
+                    CreatedBy: 'Admin',
+                    CreatedOn: new Date(),
+                    UpdatedBy: 'Admin',
+                    UpdatedOn: new Date()
                 }
-            });
+                var jsonData = JSON.stringify(data);
 
+                $.ajax({
+                    url: "https://localhost:7066/api/TeamsApi/CreateTeam",
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: "application/json;charset=utf-8",
+                    data: jsonData,
+                    success: function (data) {
+                        window.close();
+                        window.open("/Home/Teams");
+                    },
+                    error: function (e) {
+                    }
+                });
+            }
+            else {
+
+                //Update
+                $.ajax({
+                    url: "https://localhost:7066/api/TeamsApi/UpdateTeamById/" + options.teamId,
+                    type: 'PUT',
+                    dataType: 'json',
+                    contentType: "application/json;charset=utf-8",
+                    data: jsonData,
+                    success: function (data) {
+                        window.close();
+                        window.open("/Home/Teams");
+                    },
+                    error: function (e) {
+                    }
+                });
+            }
+           
         });
-        
+
+        $("#canceBtn").click(function () {
+
+            window.close()
+        });
+    }
+
+    function onLoad(options) {
+
+        debugger;
+        $.ajax({
+            url: "https://localhost:7066/api/TeamsApi/GetTeamById/" + options.teamId,
+            type: 'GET',
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                debugger;
+                $("#name").val(data.name);
+            },
+            error: function (e) {
+            }
+        });
     }
 
 
-
-
     return {
-        init: function () {
-            pageInit();
+        init: function (options) {
+            pageInit(options);
         }
     }
 

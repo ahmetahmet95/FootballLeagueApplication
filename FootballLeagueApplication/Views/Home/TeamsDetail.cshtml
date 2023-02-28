@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Teams Detail";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<form action="/action_page.php">
+    <label for="fname">Team name:</label>
+    <input type="text" id="fname" name="fname"><br><br>
+
+    <button type="button" id="createBtn" class="btn btn-primary">Save</button>
+    <button type="button" id="canceBtn"class="btn btn-danger">Cancel</button>
+
+</form>
+
+
+
+
+@section Scripts{
+
+    <script src="~/js/TeamsDetailScript.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            scriptApp.init();
+
+        });
+
+
+    </script>
+    }
+

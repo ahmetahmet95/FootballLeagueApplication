@@ -1,3 +1,5 @@
+using DataAccess.Interface;
+using DataAccess.Service;
 using DataAccessLibrary;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +10,9 @@ var connectionString = builder.Configuration.GetConnectionString("DbConnection")
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

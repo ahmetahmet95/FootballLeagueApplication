@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Teams";
+}
+<h1>@ViewData["Title"]</h1>
+<br></br>
+<button type="button" id = "teamCreateBtn"  class="btn btn-outline-primary">Create</button><hr></hr>
+
+<table id="table1" class="table table-bordered table table-condensed table-responsive">
+    <thead>
+        <tr>
+            <th class="th">Name</th>
+            <th class="th">Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section Styles{
+    <style>
+        .filter[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .filter[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .filter[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        .row {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .fieldlist li {
+            list-style: none;
+            padding-bottom: 20px;
+        }
+        .dropdown {
+            margin-left: 185px;
+            margin-top: -65px;
+        }
+    </style>
+}
+
+    @section Scripts{
+
+    <script src="~/js/TeamsScript.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            scriptApp.init();
+
+        });
+        
+       
+    </script>
+    }

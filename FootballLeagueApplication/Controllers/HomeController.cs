@@ -18,10 +18,16 @@ namespace FootballLeagueApplication.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Teams()
         {
             return View();
         }
+        public IActionResult TeamsDetail()
+        {
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

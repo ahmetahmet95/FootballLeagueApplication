@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueApplication", "FootballLeagueApplication\FootballLeagueApplication.csproj", "{904C3B2C-89F2-4DBE-8566-74C6BB949976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeagueApplication", "FootballLeagueApplication\FootballLeagueApplication.csproj", "{904C3B2C-89F2-4DBE-8566-74C6BB949976}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueWebApi", "FootballLeagueWebApi\FootballLeagueWebApi.csproj", "{B9CEBB06-0A01-45F3-8E71-ED3458238BA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeagueWebApi", "FootballLeagueWebApi\FootballLeagueWebApi.csproj", "{B9CEBB06-0A01-45F3-8E71-ED3458238BA9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation Layer", "Presentation Layer", "{AE5B1245-BBB4-4F39-A981-025E1A12B99F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Layer", "Business Layer", "{4F50EB3A-1C91-4D70-B94F-7FB479FAA76F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLibrary", "ServiceLibrary\ServiceLibrary.csproj", "{CDDC6B15-861F-46C9-A0C4-5BFFA0A5EA97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceLibrary", "ServiceLibrary\ServiceLibrary.csproj", "{CDDC6B15-861F-46C9-A0C4-5BFFA0A5EA97}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess layer", "DataAccess layer", "{62E67B2F-F11A-421D-9C12-FE9CDF123BBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{1A95B598-BFEC-4543-9293-4B63BD747C17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{1A95B598-BFEC-4543-9293-4B63BD747C17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsLibrary", "ModelsLibrary\ModelsLibrary.csproj", "{3B105331-7515-4692-A24F-6C887F818CDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1A95B598-BFEC-4543-9293-4B63BD747C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A95B598-BFEC-4543-9293-4B63BD747C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A95B598-BFEC-4543-9293-4B63BD747C17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B105331-7515-4692-A24F-6C887F818CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B105331-7515-4692-A24F-6C887F818CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B105331-7515-4692-A24F-6C887F818CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B105331-7515-4692-A24F-6C887F818CDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{B9CEBB06-0A01-45F3-8E71-ED3458238BA9} = {AE5B1245-BBB4-4F39-A981-025E1A12B99F}
 		{CDDC6B15-861F-46C9-A0C4-5BFFA0A5EA97} = {4F50EB3A-1C91-4D70-B94F-7FB479FAA76F}
 		{1A95B598-BFEC-4543-9293-4B63BD747C17} = {62E67B2F-F11A-421D-9C12-FE9CDF123BBC}
+		{3B105331-7515-4692-A24F-6C887F818CDB} = {62E67B2F-F11A-421D-9C12-FE9CDF123BBC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEE6CE1D-24AC-49CC-B593-794468F470CD}

@@ -14,17 +14,17 @@ namespace ModelsLibrary.Models
         public int Id { get; set; }
 
 
-        [ForeignKey("HomeTeam"), Column(Order = 0)]
-        public int? HomeTeamId { get; set; }
+        [ForeignKey("FirstTeam"), Column(Order = 0)]
+        public int? FirstTeamId { get; set; }
 
-        [ForeignKey("GuestTeam"), Column(Order = 1)]
-        public int? GuestTeamId { get; set; }
-
-        [Required]
-        public int HomeTeamScore { get; set; }
+        [ForeignKey("SecondTeam"), Column(Order = 1)]
+        public int? SecondTeamId { get; set; }
 
         [Required]
-        public int GuestTeamScore { get; set; }
+        public int FirstTeamScore { get; set; }
+
+        [Required]
+        public int SecondTeamScore { get; set; }
 
         [Required]
         public int Year { get; set; }
@@ -40,7 +40,7 @@ namespace ModelsLibrary.Models
 
         [Required]
         public DateTime UpdatedOn { get; set; }
-        public virtual Teams HomeTeam { get; set; }
-        public virtual Teams GuestTeam { get; set; }
+        public virtual Teams FirstTeam { get; set; }
+        public virtual Teams SecondTeam { get; set; }
     }
 }

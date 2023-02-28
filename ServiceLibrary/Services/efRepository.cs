@@ -1,6 +1,7 @@
 ﻿
 using DataAccess.Interface;
 using DataAccessLibrary;
+using DataAccessLibrary.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;

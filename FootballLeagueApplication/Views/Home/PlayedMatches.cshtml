@@ -1,32 +1,34 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Teams";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome to world cup football league</h1><br></br>
-</div>
-
+<h1>@ViewData["Title"]</h1>
+<br></br>
+<button type="button" id="playedMatchesCreateBtn" class="btn btn-outline-primary">Create</button>
+<hr></hr>
 
 <table id="table1" class="table table-bordered table table-condensed table-responsive">
     <thead>
         <tr>
             <th class="th">Name</th>
+            <th class="th">Operations</th>
         </tr>
     </thead>
     <tbody>
     </tbody>
 </table>
 
+
+
 @section Styles{
     <style>
-       
+     
     </style>
 }
 
-    
+
     @section Scripts{
 
-    <script src="~/js/TeamsRank.js"></script>
+    <script src="~/js/PlayedMatchesScript.js"></script>
 
     <script>
 
@@ -34,7 +36,7 @@
             scriptApp.init();
 
         });
-        
-       
+
+
     </script>
     }

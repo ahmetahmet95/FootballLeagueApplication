@@ -21,10 +21,10 @@ namespace ModelsLibrary.Models
         public int? GuestTeamId { get; set; }
 
         [Required]
-        public int FirstTeamScore { get; set; }
+        public int HomeTeamScore { get; set; }
 
         [Required]
-        public int SecondTeamScore { get; set; }
+        public int GuestTeamScore { get; set; }
 
         [Required]
         public int Year { get; set; }

@@ -18,6 +18,16 @@ namespace FootballLeagueApplication.Controllers
             return View();
         }
 
+        public IActionResult PlayedMatches()
+        {
+            return View();
+        }
+
+        public IActionResult PlayedMatchesDetail()
+        {
+            return View();
+        }
+
         public IActionResult Teams()
         {
             return View();

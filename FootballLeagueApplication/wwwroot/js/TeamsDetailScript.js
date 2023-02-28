@@ -29,8 +29,8 @@
                     contentType: "application/json;charset=utf-8",
                     data: jsonData,
                     success: function (data) {
-                        window.close();
-                        window.open("/Home/Teams");
+                        window.close()
+                        window.open("/Home/Teams", '_parent');
                     },
                     error: function (e) {
                     }
@@ -40,14 +40,13 @@
 
                 //Update
                 $.ajax({
-                    url: "https://localhost:7066/api/TeamsApi/UpdateTeamById/" + options.teamId,
+                    url: "https://localhost:7066/api/TeamsApi/UpdateTeamById/" + options.teamId+ "/"+ $("#name").val(),
                     type: 'PUT',
                     dataType: 'json',
                     contentType: "application/json;charset=utf-8",
-                    data: jsonData,
                     success: function (data) {
-                        window.close();
-                        window.open("/Home/Teams");
+                        window.close()
+                        window.open("/Home/Teams", '_parent');
                     },
                     error: function (e) {
                     }
@@ -59,6 +58,7 @@
         $("#canceBtn").click(function () {
 
             window.close()
+            window.open("/Home/Teams", '_parent');
         });
     }
 
@@ -71,7 +71,7 @@
             dataType: 'json',
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-                debugger;
+
                 $("#name").val(data.name);
             },
             error: function (e) {

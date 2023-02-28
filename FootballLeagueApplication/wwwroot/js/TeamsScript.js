@@ -1,8 +1,15 @@
 ﻿var scriptApp = function () {
-    var globalData = [];
 
-
+    renderTable();
     function pageInit() {
+
+        $("#teamCreateBtn").click(function () {
+
+            window.open("/Home/TeamsDetail", "_parent");
+        });
+    }
+
+    function renderTable() {
 
         $.ajax({
             url: "https://localhost:7066/api/TeamsApi/GetTeams",
@@ -11,15 +18,13 @@
             contentType: "application/json;charset=utf-8",
             success: function (res) {
 
-                globalData = res;
-
                 var trows = "";
                 $.each(res, function (i, val) {
                     trows += "<tr id=" + val.id + ">";
                     trows += "<td>" + val.name + "</td>";
                     trows += "<td>" +
                         "<button onclick = 'scriptApp.onEdit(" + val.id + ")' class='btn btn-outline-primary'> Edit</button > " +
-                        "<button onclick = 'onDelete(" + val.id + ")' class='btn btn-outline-danger'> Delete</button >" +
+                        "<button onclick = 'scriptApp.onDelete(" + val.id + ")' class='btn btn-outline-danger'> Delete</button >" +
                         "</td > ";
                     trows += "</tr>";
                 });
@@ -29,29 +34,23 @@
             error: function (e) {
             }
         });
+    };
 
-        $("#teamCreateBtn").click(function () {
+    function onEdit(id) {
 
-            window.open("/Home/TeamsDetail");
-        });
+        window.open("/Home/TeamsDetail?id=" + id, "_parent");
     }
 
-    function onEdit(id){
-
-        window.open("/Home/TeamsDetail?id=" + id);
-    }
-
-    function onDelete() {
+    function onDelete(id) {
 
         $.ajax({
-            url: "https://localhost:7066/api/TeamsApi/CreateTeam",
-            type: 'POST',
+            url: "https://localhost:7066/api/TeamsApi/DeleteTeamById/" + id,
+            type: 'DELETE',
             dataType: 'json',
             contentType: "application/json;charset=utf-8",
-            data: jsonData,
             success: function (res) {
-                window.close();
-                window.open("/Home/Teams");
+
+                renderTable();
             },
             error: function (e) {
             }
@@ -63,7 +62,8 @@
             pageInit();
         },
         onEdit: onEdit,
-        onDelete: onDelete
+        onDelete: onDelete,
+        renderTable: renderTable
     }
 
 }();

@@ -43,13 +43,20 @@ namespace FootballLeagueWebApi.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateTeamById/{id}")]
-        public async Task<Teams> UpdateTeamById(int id)
+        [Route("UpdateTeamById/{id}/{name}")]
+        public async Task<int> UpdateTeamById(int id, string name)
         {
-            var result = await _repository.UpdateAsync(model);
-            await _repository.Save();
-            return result;
+            //to do
+            return 1;
         }
 
+        [HttpDelete]
+        [Route("DeleteTeamById/{id}")]
+        public async Task<Teams> DeleteTeamById(int id)
+        {
+            await _repository.DeleteByIdAsync(id);
+            await _repository.Save();
+            return null;
+        }
     }
 }

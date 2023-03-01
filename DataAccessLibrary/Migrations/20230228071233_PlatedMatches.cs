@@ -22,9 +22,9 @@ namespace DataAccessLibrary.Migrations
                 SecondTeamScore = table.Column<int>(type: "int", nullable: false),
                 Year = table.Column<int>(type: "int", nullable: false),
                 CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                 UpdatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
+                UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: false)
             },
             constraints: table =>
             {

@@ -1,4 +1,4 @@
-﻿
+﻿ 
 using DataAccess.Interface;
 using DataAccessLibrary;
 using DataAccessLibrary.Migrations;
@@ -25,7 +25,7 @@ namespace DataAccess.Service
 
         public async Task<T> CreateAsync(T entity)
         {
-            await _dbSet.AddAsync(entity);
+            await _dbSet.AddAsync(entity);   
             return entity;
         }
 
@@ -51,7 +51,7 @@ namespace DataAccess.Service
 
         public async Task DeleteByIdAsync(int id)
         {
-            var entity = await _dbContext.Set<T>().FindAsync(id);
+            var entity = await _dbSet.FindAsync(id);
             _dbContext.Set<T>().Remove(entity);
         }
 

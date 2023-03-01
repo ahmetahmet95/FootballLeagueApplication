@@ -33,12 +33,11 @@
                         window.open("/Home/Teams", '_parent');
                     },
                     error: function (e) {
+                        alert("Team alredy exist!");
                     }
                 });
             }
             else {
-
-                debugger;
                 //Update
                 var data = {
                     Id: globalData.id,
@@ -62,6 +61,7 @@
                         window.open("/Home/Teams", '_parent');
                     },
                     error: function (e) {
+                        alert("Team alredy exist!");
                     }
                 });
             }

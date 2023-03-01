@@ -17,7 +17,7 @@ namespace ModelsLibrary.Models
         public int? TeamsId { get; set; }
 
         [ForeignKey("TeamsId")]
-        public virtual Teams Teams { get; set; }
+        public virtual Teams? Teams { get; set; }
 
         [Required]
         public int Year { get; set; }
@@ -34,6 +34,6 @@ namespace ModelsLibrary.Models
         [Required]
         public DateTime UpdatedOn { get; set; }
 
-        public int? TotalPoint { get; set; }
+        public int TotalPoint { get; set; }
     }
 }

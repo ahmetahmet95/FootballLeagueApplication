@@ -13,12 +13,12 @@ namespace FootballLeagueWebApi.Controllers
     {
 
         private readonly IRepository<PlayedMatches> _repository;
-        private readonly ITeamService _teamsService;
+        private readonly ITeamService _teamService;
 
-        public PlayedMatchesApiController(IRepository<PlayedMatches> repository, ITeamService teamsService)
+        public PlayedMatchesApiController(IRepository<PlayedMatches> repository, ITeamService teamService)
         {
             _repository = repository;
-            _teamsService = teamsService;
+            _teamService = teamService;
         }
 
         #region PlayedMatches
@@ -27,7 +27,7 @@ namespace FootballLeagueWebApi.Controllers
         [Route("GetTeamsForCombo")]
         public List<Teams> GetTeamsForCombo()
         {
-            var result = _teamsService.GetTeams();
+            var result = _teamService.GetTeams();
             return result;
         }
 
@@ -35,24 +35,24 @@ namespace FootballLeagueWebApi.Controllers
         [Route("GetTeamsByIdForCombo/{id}")]
         public List<PlayedMatches> GetTeamsByIdForCombo(int id)
         {
-            var result = _teamsService.GetTeamsByIdForPlayedMatches(id);
+            var result = _teamService.GetTeamsByIdForPlayedMatches(id);
             return result;
         }
 
         [HttpPost]
         [Route("CreatePlayedMatches")]
-        public async Task<Teams> CreatePlayedMatches([FromBody] PlayedMatches model)
+        public async Task<PlayedMatches> CreatePlayedMatches([FromBody] PlayedMatches model)
         {
             var result = await _repository.CreateAsync(model);
             await _repository.Save();
-            return null;
+            return result;
         }
 
         [HttpGet]
         [Route("GetPlayedMatches")]
         public List<PlayedMatches> GetPlayedMatches()
         {
-            var result = _teamsService.GetPlayedMatches();
+            var result = _teamService.GetPlayedMatches();
             return result;
         }
 
@@ -60,9 +60,9 @@ namespace FootballLeagueWebApi.Controllers
         [Route("UpdatePlayedMatches")]
         public async Task<PlayedMatches> UpdatePlayedMatches([FromBody] PlayedMatches model)
         {
-            _repository.Update(model);
-            await _repository.Save();
-            return null;
+           var result = _repository.Update(model);
+           await _repository.Save();
+           return result;
         }
 
         [HttpDelete]

@@ -66,5 +66,23 @@ namespace ServiceLibrary.Services
 
             return playedMatches.ToList();
         }
+
+        public List<TeamsRank> GetTeamsRank()
+        {
+            var teamsRank =
+
+               from ranks in _dbContext.TeamsRank
+               join teams in _dbContext.Teams on ranks.TeamsId equals teams.Id
+               orderby ranks.TotalPoint descending
+               select new TeamsRank
+               {
+                   Id = ranks.Id,
+                   Teams = teams,
+                   Year = ranks.Year,
+                   TotalPoint = ranks.TotalPoint
+               };
+
+            return teamsRank.ToList();
+        }
     }
 }

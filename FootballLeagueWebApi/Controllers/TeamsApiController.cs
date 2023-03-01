@@ -1,4 +1,5 @@
 using DataAccess.Interface;
+using DataAccessLibrary;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using ModelsLibrary.Models;
 using ServiceLibrary.Interfaces;
 using ServiceLibrary.Services;
 using System.ComponentModel.DataAnnotations;
+
 
 namespace FootballLeagueWebApi.Controllers
 {
@@ -15,12 +17,10 @@ namespace FootballLeagueWebApi.Controllers
     {
 
         private readonly IRepository<Teams> _repository;
-        private readonly ITeamService _teamsService;
 
-        public TeamsApiController(IRepository<Teams> repository, ITeamService teamsService)
+        public TeamsApiController(IRepository<Teams> repository)
         {
             _repository = repository;
-            _teamsService = teamsService;
         }
 
         [HttpPost]
@@ -29,14 +29,14 @@ namespace FootballLeagueWebApi.Controllers
         {
             var result = await _repository.CreateAsync(model);
             await _repository.Save();
-            return null;
+            return result;
         }
 
         [HttpGet]
         [Route("GetTeams")]
         public async Task<IEnumerable<Teams>> GetTeams()
         {
-            var result =  await _repository.GetAllAsync();
+            var result = await _repository.GetAllAsync();
             return result;
         }
 
@@ -52,6 +52,7 @@ namespace FootballLeagueWebApi.Controllers
         [Route("UpdateTeam")]
         public async Task<Teams> UpdateTeam([FromBody] Teams model)
         {
+
             var entity = await _repository.GetByIdAsync(model.Id);
             entity.Name = model.Name;
             entity.UpdatedBy = model.UpdatedBy;

@@ -10,9 +10,8 @@ namespace ServiceLibrary.Interfaces
     public interface ITeamService
     {
         List<Teams> GetTeams();
-
         List<PlayedMatches> GetTeamsByIdForPlayedMatches(int id);
-
         List<PlayedMatches> GetPlayedMatches();
+        List<TeamsRank> GetTeamsRank();
     }
 }

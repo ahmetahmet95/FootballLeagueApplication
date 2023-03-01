@@ -3,6 +3,8 @@ using DataAccess.Service;
 using DataAccessLibrary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using ServiceLibrary.Interfaces;
+using ServiceLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+builder.Services.AddScoped(typeof(ITeamService), typeof(TeamService));
 
 // Add services to the container.
 

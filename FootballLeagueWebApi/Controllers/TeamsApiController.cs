@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ModelsLibrary.Models;
+using ServiceLibrary.Interfaces;
+using ServiceLibrary.Services;
 
 namespace FootballLeagueWebApi.Controllers
 {
@@ -12,9 +14,12 @@ namespace FootballLeagueWebApi.Controllers
     {
 
         private readonly IRepository<Teams> _repository;
-        public TeamsApiController(IRepository<Teams> repository)
+        private readonly ITeamService _teamsService;
+
+        public TeamsApiController(IRepository<Teams> repository, ITeamService teamsService)
         {
             _repository = repository;
+            _teamsService = teamsService;
         }
 
         [HttpPost]
@@ -58,5 +63,6 @@ namespace FootballLeagueWebApi.Controllers
             await _repository.Save();
             return null;
         }
+
     }
 }

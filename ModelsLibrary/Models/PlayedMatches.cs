@@ -40,7 +40,7 @@ namespace ModelsLibrary.Models
 
         [Required]
         public DateTime UpdatedOn { get; set; }
-        public virtual Teams FirstTeam { get; set; }
-        public virtual Teams SecondTeam { get; set; }
+        public virtual Teams? FirstTeam { get; set; }
+        public virtual Teams? SecondTeam { get; set; }
     }
 }

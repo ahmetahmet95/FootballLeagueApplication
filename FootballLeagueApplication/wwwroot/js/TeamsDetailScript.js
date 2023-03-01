@@ -64,7 +64,6 @@
 
     function onLoad(options) {
 
-        debugger;
         $.ajax({
             url: "https://localhost:7066/api/TeamsApi/GetTeamById/" + options.teamId,
             type: 'GET',

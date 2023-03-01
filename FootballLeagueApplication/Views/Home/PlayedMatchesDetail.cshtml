@@ -7,13 +7,13 @@
 <form action="/action_page.php">
 
     <div class="col1">
-        <label for="fname">Home Team:</label>
-        <select id="homeTeamPoints"> </select>
+        <label for="fname">Home Team:</label><br></br>
+        <select id="homeTeamId"> </select>
     </div>
 
     <div class="col2">
-        <label for="fname">Guest Team:</label>
-        <input type="text" id="secondTeam" name="secondTeam"><br></br>
+        <label for="fname">Guest Team:</label><br></br>
+        <select id="guestTeamId"> </select>
     </div><br></br><br></br>
 
     <div class="col1">
@@ -29,7 +29,7 @@
         <label for="field2">Guest Team Score</label><br></br>
         <select id="guestTeamPoints">
             <option value="3">Win</option>
-            <option value="audi" selected>Draw</option>
+            <option value="1" selected>Draw</option>
             <option value="0">Loss</option>
 
         </select>
@@ -66,12 +66,14 @@
 
     @section Scripts{
 
-    <script src="~/js/PlayedMatchesScript.js"></script>
+    <script src="~/js/PlayedMatchesDetailScript.js"></script>
 
     <script>
-
+        var options = {
+            teamId: "@ViewBag.Id"
+        }
         jQuery(document).ready(function () {
-            scriptApp.init();
+            scriptApp.init(options);
 
         });
 

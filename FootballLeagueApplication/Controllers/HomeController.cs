@@ -23,8 +23,9 @@ namespace FootballLeagueApplication.Controllers
             return View();
         }
 
-        public IActionResult PlayedMatchesDetail()
+        public IActionResult PlayedMatchesDetail(int id)
         {
+            ViewBag.Id = id;
             return View();
         }
 

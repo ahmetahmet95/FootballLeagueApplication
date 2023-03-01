@@ -41,17 +41,12 @@ namespace DataAccess.Service
             return result;
         }
 
-        public async Task<T> UpdateAsync(T entity)
-        {
-            EntityEntry entityEntry = _dbContext.Entry<T>(entity);
-            EntityState entityState = entityEntry.State;
-            return entity;
-        }
+        public T Update(T entity)
+        {    
 
-        public async Task<T> UpdateByIdAsync(int id, string name)
-        {
-            //to do
-            return null;
+            var entry = _dbContext.Entry(entity);
+            entry.State = EntityState.Modified;
+            return entity;
         }
 
         public async Task DeleteByIdAsync(int id)

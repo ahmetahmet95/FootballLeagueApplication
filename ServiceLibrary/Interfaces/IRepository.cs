@@ -12,8 +12,7 @@ namespace DataAccess.Interface
         Task<T> CreateAsync(T entity);
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<T> UpdateAsync(T entity);
-        Task<T> UpdateByIdAsync(int id, string name);
+        T Update(T entity);
         Task DeleteByIdAsync(int id);
         Task<int> Save();
 

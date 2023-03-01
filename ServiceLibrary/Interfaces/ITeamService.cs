@@ -11,7 +11,7 @@ namespace ServiceLibrary.Interfaces
     {
         List<Teams> GetTeams();
 
-        List<PlayedMatches> GetTeamsById(int id);
+        List<PlayedMatches> GetTeamsByIdForPlayedMatches(int id);
 
         List<PlayedMatches> GetPlayedMatches();
     }

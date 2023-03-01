@@ -17,7 +17,7 @@
             dataType: 'json',
             contentType: "application/json;charset=utf-8",
             success: function (res) {
-                debugger;
+              
                 var trows = "";
                 $.each(res, function (i, val) {
                     trows += "<tr id=" + val.id + ">";

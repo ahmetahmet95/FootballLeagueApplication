@@ -47,9 +47,8 @@
     };
 
     function onEdit(id) {
-        debugger;
-        window.open("/Home/PlayedMatchesDetail?id=" + id, "_parent");
 
+        window.open("/Home/PlayedMatchesDetail?id=" + id, "_parent");
     }
 
 

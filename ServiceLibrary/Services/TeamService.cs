@@ -18,16 +18,7 @@ namespace ServiceLibrary.Services
         {
             _dbContext = dbContext;
         }
-
-        public List<Teams> GetTeams()
-        {
-            var teamModel = from teams in _dbContext.Teams
-                            where teams.Id > 0
-                             select new Teams() { Id = teams.Id, Name = teams.Name };
-
-            return teamModel.ToList();
-        }
-        public List<PlayedMatches> GetTeamsById(int id)
+        public List<PlayedMatches> GetTeamsByIdForPlayedMatches(int id)
         {
             var teams =
 
@@ -41,12 +32,21 @@ namespace ServiceLibrary.Services
                    FirstTeam = teamsOne,
                    SecondTeam = teamsTwo,
                    FirstTeamScore = played.FirstTeamScore,
-                   SecondTeamScore = played.SecondTeamScore
+                   SecondTeamScore = played.SecondTeamScore,
+                   Year = played.Year
                };
 
             return teams.ToList();
         }
-        
+
+        public List<Teams> GetTeams()
+        {
+            var teamModel = from teams in _dbContext.Teams
+                            where teams.Id > 0
+                            select new Teams() { Id = teams.Id, Name = teams.Name };
+
+            return teamModel.ToList();
+        }
 
         public List<PlayedMatches> GetPlayedMatches()
         {
@@ -55,14 +55,13 @@ namespace ServiceLibrary.Services
                from played in _dbContext.PlayedMatches
                join teamsOne in _dbContext.Teams on played.FirstTeamId equals teamsOne.Id
                join teamsTwo in _dbContext.Teams on played.SecondTeamId equals teamsTwo.Id
-               where played.Id > 0
                select new PlayedMatches { 
                    Id = played.Id,
                    FirstTeam = teamsOne,
                    SecondTeam = teamsTwo,
                    FirstTeamScore = played.FirstTeamScore,
                    SecondTeamScore = played.SecondTeamScore,
-                   Year = played.Year 
+                   Year = played.Year
                };
 
             return playedMatches.ToList();

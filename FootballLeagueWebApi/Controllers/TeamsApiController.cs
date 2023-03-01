@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using ModelsLibrary.Models;
 using ServiceLibrary.Interfaces;
 using ServiceLibrary.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace FootballLeagueWebApi.Controllers
 {
@@ -48,11 +49,17 @@ namespace FootballLeagueWebApi.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateTeamById/{id}/{name}")]
-        public async Task<int> UpdateTeamById(int id, string name)
+        [Route("UpdateTeam")]
+        public async Task<Teams> UpdateTeam([FromBody] Teams model)
         {
-            //to do
-            return 1;
+            var entity = await _repository.GetByIdAsync(model.Id);
+            entity.Name = model.Name;
+            entity.UpdatedBy = model.UpdatedBy;
+            entity.UpdatedOn = model.UpdatedOn;
+
+            var result = _repository.Update(entity);
+            await _repository.Save();
+            return result;
         }
 
         [HttpDelete]

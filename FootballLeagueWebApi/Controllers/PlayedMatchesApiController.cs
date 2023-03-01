@@ -34,7 +34,7 @@ namespace FootballLeagueWebApi.Controllers
         [Route("GetTeamsByIdForCombo/{id}")]
         public List<PlayedMatches> GetTeamsByIdForCombo(int id)
         {
-            var result = _teamsService.GetTeamsById(id);
+            var result = _teamsService.GetTeamsByIdForPlayedMatches(id);
             return result;
         }
 

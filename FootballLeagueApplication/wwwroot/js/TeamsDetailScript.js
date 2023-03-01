@@ -1,5 +1,5 @@
 ﻿var scriptApp = function () {
-
+    var globalData;
     function pageInit(options) {
 
         if (options.teamId != 0) {
@@ -38,11 +38,24 @@
             }
             else {
 
+                debugger;
                 //Update
+                var data = {
+                    Id: globalData.id,
+                    Name: $("#name").val(),
+                    CreatedBy: globalData.createdBy,
+                    CreatedOn: globalData.createdOn,
+                    UpdatedBy: globalData.updatedBy,
+                    UpdatedOn: globalData.updatedOn
+                }
+
+                var jsonData = JSON.stringify(data);
+              
                 $.ajax({
-                    url: "https://localhost:7066/api/TeamsApi/UpdateTeamById/" + options.teamId+ "/"+ $("#name").val(),
+                    url: "https://localhost:7066/api/TeamsApi/UpdateTeam",
                     type: 'PUT',
                     dataType: 'json',
+                    data: jsonData,
                     contentType: "application/json;charset=utf-8",
                     success: function (data) {
                         window.close()
@@ -70,7 +83,8 @@
             dataType: 'json',
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-
+                debugger;
+                globalData = data;
                 $("#name").val(data.name);
             },
             error: function (e) {

@@ -1,15 +1,8 @@
 ﻿var scriptApp = function () {
-    var comboData;
 
     function pageInit(options) {
 
-        if (options.teamId == 0) {
-
-            onCreateLoad();
-        }
-        else {
-            onUpdateLoad(options.teamId);
-        }
+        onLoad(options.teamId);
 
         $("#createBtn").click(function () {
 
@@ -26,7 +19,6 @@
                     CreatedOn: new Date(),
                     UpdatedBy: 'Admin',
                     UpdatedOn: new Date()
-
                 }
                 var jsonData = JSON.stringify(data);
 
@@ -45,19 +37,35 @@
                 });
             }
             else {
+
                 //Update
-                //$.ajax({
-                //    url: "https://localhost:7066/api/TeamsApi/UpdateTeamById/" + options.teamId + "/" + $("#name").val(),
-                //    type: 'PUT',
-                //    dataType: 'json',
-                //    contentType: "application/json;charset=utf-8",
-                //    success: function (data) {
-                //        window.close()
-                //        window.open("/Home/Teams", '_parent');
-                //    },
-                //    error: function (e) {
-                //    }
-                //});
+                var data = {
+                    Id: options.teamId,
+                    FirstTeamId: parseInt($('#homeTeamId').find(":selected").val()),
+                    FirstTeamScore: parseInt($('#homeTeamPoints').find(":selected").val()),
+                    SecondTeamId: parseInt($('#guestTeamId').find(":selected").val()),
+                    SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val()),
+                    Year: new Date().getFullYear(),
+                    CreatedBy: 'Admin',
+                    CreatedOn: new Date(),
+                    UpdatedBy: 'Admin',
+                    UpdatedOn: new Date()
+                }
+                var jsonData = JSON.stringify(data);
+
+                $.ajax({
+                    url: "https://localhost:7066/api/PlayedMatchesApi/UpdatePlayedMatches",
+                    type: 'PUT',
+                    data: jsonData,
+                    dataType: 'json',
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        window.close()
+                        window.open("/Home/PlayedMatches", '_parent');
+                    },
+                    error: function (e) {
+                    }
+                });
             }
         });
 
@@ -68,7 +76,7 @@
         });
     }
 
-    function onCreateLoad() {
+    function onLoad(id) {
 
         $.ajax({
             url: "https://localhost:7066/api/PlayedMatchesApi/GetTeamsForCombo",
@@ -76,7 +84,6 @@
             dataType: 'json',
             contentType: "application/json;charset=utf-8",
             success: function (res) {
-                comboData = res;
 
                 $.each(res, function () {
                     var dropdown1 = $("#homeTeamId");
@@ -85,15 +92,21 @@
                     var dropdown2 = $("#guestTeamId");
                     dropdown2.append($("<option />").val(this.id).text(this.name));
                 });
+
+                if (id != 0) {
+
+                    onUpdateLoad(id);
+                }
+
             },
             error: function (e) {
-      
+
             }
         });
     }
 
     function onUpdateLoad(id) {
-        onCreateLoad();
+
         $.ajax({
             url: "https://localhost:7066/api/PlayedMatchesApi/GetTeamsByIdForCombo/" + id,
             type: 'GET',
@@ -101,20 +114,11 @@
             contentType: "application/json;charset=utf-8",
             success: function (res) {
      
-         
                 $.each(res, function () {
                     debugger;
 
-                    //to do
-
-                    //$("#homeTeamId").val(this.firstTeam.id).text(this.firstTeam.name).trigger('change');
-                    //$("#guestTeamId").val(this.secondTeam.id).text(this.secondTeam.name).trigger('change');
-
-                    //var dropdown1 = $("#homeTeamId");
-                    //dropdown1.select($("<option />").val(this.firstTeam.id).text(this.firstTeam.name));
-
-                    //var dropdown2 = $("#guestTeamId");
-                    //dropdown2.select($("<option />").val(this.secondTeam.id).text(this.secondTeam.name));
+                    $("#homeTeamId").val(this.firstTeam.id).trigger('change');
+                    $("#guestTeamId").val(this.secondTeam.id).trigger('change');
 
                     $("#homeTeamPoints").val(this.firstTeamScore).change();
                     $("#guestTeamPoints").val(this.secondTeamScore).change();
@@ -133,7 +137,7 @@
         init: function (options) {
             pageInit(options);
         },
-        onCreateLoad: onCreateLoad,
+        onLoad: onLoad,
         onUpdateLoad: onUpdateLoad
     }
 

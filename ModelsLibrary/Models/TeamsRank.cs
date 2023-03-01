@@ -33,5 +33,7 @@ namespace ModelsLibrary.Models
 
         [Required]
         public DateTime UpdatedOn { get; set; }
+
+        public int? TotalPoint { get; set; }
     }
 }

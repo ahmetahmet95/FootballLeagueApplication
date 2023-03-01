@@ -57,7 +57,7 @@ namespace DataAccess.Service
 
         public async Task<int> Save()
         {
-            return await _dbContext.SaveChangesAsync();
+            return _dbContext.SaveChanges();
 
         }
     }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelsLibrary.Models;
+using ModelsLibrary.Models.ViewModels;
 using ServiceLibrary.Interfaces;
 
 namespace FootballLeagueWebApi.Controllers
@@ -53,6 +54,15 @@ namespace FootballLeagueWebApi.Controllers
         {
             var result = _teamsService.GetPlayedMatches();
             return result;
+        }
+
+        [HttpPut]
+        [Route("UpdatePlayedMatches")]
+        public async Task<PlayedMatches> UpdatePlayedMatches([FromBody] PlayedMatches model)
+        {
+            _repository.Update(model);
+            await _repository.Save();
+            return null;
         }
 
         [HttpDelete]

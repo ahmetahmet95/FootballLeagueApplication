@@ -19,7 +19,7 @@
             success: function (res) {
               
                 var trows = "";
-                $.each(res, function (i, val) {
+                $.each(res, function (i,val) {
                     trows += "<tr id=" + val.id + ">";
                     trows += "<td>" + val.name + "</td>";
                     trows += "<td>" +

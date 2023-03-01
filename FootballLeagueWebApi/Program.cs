@@ -1,10 +1,12 @@
 using DataAccess.Interface;
 using DataAccess.Service;
 using DataAccessLibrary;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ServiceLibrary.Interfaces;
 using ServiceLibrary.Services;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +44,24 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionHandler(builder =>
+{
+    builder.Run(
+      async context =>
+      {
+          context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+          context.Response.ContentType = "text/html";
+
+          var error = context.Features.Get<IExceptionHandlerFeature>();
+          if (error != null)
+          {
+              await
+                  context.Response.WriteAsync($"Error: {error.Error.Message}")
+                      .ConfigureAwait(false);
+          }
+      });
+});
 
 app.UseHttpsRedirection();
 

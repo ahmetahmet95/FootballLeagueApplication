@@ -14,11 +14,7 @@
                 //Create
                 var data = {
                     Id: 0,
-                    Name: $("#name").val(),
-                    CreatedBy: 'Admin',
-                    CreatedOn: new Date(),
-                    UpdatedBy: 'Admin',
-                    UpdatedOn: new Date()
+                    Name: $("#name").val()
                 }
                 var jsonData = JSON.stringify(data);
 
@@ -41,11 +37,7 @@
                 //Update
                 var data = {
                     Id: globalData.id,
-                    Name: $("#name").val(),
-                    CreatedBy: globalData.createdBy,
-                    CreatedOn: globalData.createdOn,
-                    UpdatedBy: globalData.updatedBy,
-                    UpdatedOn: globalData.updatedOn
+                    Name: $("#name").val()
                 }
 
                 var jsonData = JSON.stringify(data);

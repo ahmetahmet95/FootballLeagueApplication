@@ -16,12 +16,7 @@
                         FirstTeamId: parseInt($('#homeTeamId').find(":selected").val()),
                         FirstTeamScore: parseInt($('#homeTeamPoints').find(":selected").val()),
                         SecondTeamId: parseInt($('#guestTeamId').find(":selected").val()),
-                        SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val()),
-                        Year: new Date().getFullYear(),
-                        CreatedBy: 'Admin',
-                        CreatedOn: new Date(),
-                        UpdatedBy: 'Admin',
-                        UpdatedOn: new Date()
+                        SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val())
                     }
                     var jsonData = JSON.stringify(data);
 
@@ -48,12 +43,7 @@
                         FirstTeamId: parseInt($('#homeTeamId').find(":selected").val()),
                         FirstTeamScore: parseInt($('#homeTeamPoints').find(":selected").val()),
                         SecondTeamId: parseInt($('#guestTeamId').find(":selected").val()),
-                        SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val()),
-                        Year: new Date().getFullYear(),
-                        CreatedBy: 'Admin',
-                        CreatedOn: new Date(),
-                        UpdatedBy: 'Admin',
-                        UpdatedOn: new Date()
+                        SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val())
                     }
                     var jsonData = JSON.stringify(data);
 

@@ -55,6 +55,7 @@ namespace ServiceLibrary.Services
                from played in _dbContext.PlayedMatches
                join teamsOne in _dbContext.Teams on played.FirstTeamId equals teamsOne.Id
                join teamsTwo in _dbContext.Teams on played.SecondTeamId equals teamsTwo.Id
+               orderby played.Id descending
                select new PlayedMatches { 
                    Id = played.Id,
                    FirstTeam = teamsOne,

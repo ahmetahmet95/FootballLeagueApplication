@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ModelsLibrary.Models;
+using ModelsLibrary.Models.ViewModels;
 using ServiceLibrary.Interfaces;
 using ServiceLibrary.Services;
 using System.ComponentModel.DataAnnotations;
@@ -23,21 +24,12 @@ namespace FootballLeagueWebApi.Controllers
             _repository = repository;
         }
 
-        [HttpPost]
-        [Route("CreateTeam")]
-        public async Task<Teams> CreateTeam([FromBody] Teams model)
-        {
-            var result = await _repository.CreateAsync(model);
-            await _repository.Save();
-            return result;
-        }
-
         [HttpGet]
         [Route("GetTeams")]
         public async Task<IEnumerable<Teams>> GetTeams()
         {
             var result = await _repository.GetAllAsync();
-            return result;
+            return result.OrderByDescending(x => x.Id);
         }
 
         [HttpGet]
@@ -48,15 +40,38 @@ namespace FootballLeagueWebApi.Controllers
             return result;
         }
 
+        [HttpPost]
+        [Route("CreateTeam")]
+        public async Task<Teams> CreateTeam([FromBody] TeamsViewModel model)
+        {
+            Teams teams = new Teams()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                CreatedBy = "Admin",
+                CreatedOn = DateTime.Now,
+                UpdatedBy = "Admin",
+                UpdatedOn = DateTime.Now
+            };
+            var result = await _repository.CreateAsync(teams);
+            await _repository.Save();
+            return result;
+        }
+     
         [HttpPut]
         [Route("UpdateTeam")]
-        public async Task<Teams> UpdateTeam([FromBody] Teams model)
+        public async Task<Teams> UpdateTeam([FromBody] TeamsViewModel model)
         {
+            Teams teams = new Teams()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                UpdatedBy = "Admin",
+                UpdatedOn = DateTime.Now
+            };
 
-            var entity = await _repository.GetByIdAsync(model.Id);
+            var entity = await _repository.GetByIdAsync(teams.Id);
             entity.Name = model.Name;
-            entity.UpdatedBy = model.UpdatedBy;
-            entity.UpdatedOn = model.UpdatedOn;
 
             var result = _repository.Update(entity);
             await _repository.Save();

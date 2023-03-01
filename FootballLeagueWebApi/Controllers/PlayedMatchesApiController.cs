@@ -39,15 +39,6 @@ namespace FootballLeagueWebApi.Controllers
             return result;
         }
 
-        [HttpPost]
-        [Route("CreatePlayedMatches")]
-        public async Task<PlayedMatches> CreatePlayedMatches([FromBody] PlayedMatches model)
-        {
-            var result = await _repository.CreateAsync(model);
-            await _repository.Save();
-            return result;
-        }
-
         [HttpGet]
         [Route("GetPlayedMatches")]
         public List<PlayedMatches> GetPlayedMatches()
@@ -56,11 +47,50 @@ namespace FootballLeagueWebApi.Controllers
             return result;
         }
 
+        [HttpPost]
+        [Route("CreatePlayedMatches")]
+        public async Task<PlayedMatches> CreatePlayedMatches([FromBody] PlayedMatchesViewModel model)
+        {
+            PlayedMatches playedMatches = new PlayedMatches()
+            {
+                Id = model.Id,
+                FirstTeamId = model.FirstTeamId,
+                FirstTeamScore = model.FirstTeamScore,
+                SecondTeamId = model.SecondTeamId,
+                SecondTeamScore = model.SecondTeamScore,
+                CreatedBy = "Admin",
+                CreatedOn = DateTime.Now,
+                UpdatedBy = "Admin",
+                UpdatedOn = DateTime.Now,
+                Year = DateTime.Now.Year
+            };
+
+            var result = await _repository.CreateAsync(playedMatches);
+            await _repository.Save();
+            return result;
+        }
+
         [HttpPut]
         [Route("UpdatePlayedMatches")]
-        public async Task<PlayedMatches> UpdatePlayedMatches([FromBody] PlayedMatches model)
+        public async Task<PlayedMatches> UpdatePlayedMatches([FromBody] PlayedMatchesViewModel model)
         {
-           var result = _repository.Update(model);
+            PlayedMatches playedMatches = new PlayedMatches()
+            {
+                Id = model.Id,
+                FirstTeamId = model.FirstTeamId,
+                FirstTeamScore = model.FirstTeamScore,
+                SecondTeamId = model.SecondTeamId,
+                SecondTeamScore = model.SecondTeamScore,
+                CreatedBy = "Admin",
+                CreatedOn = DateTime.Now,
+                UpdatedBy = "Admin",
+                UpdatedOn = DateTime.Now,
+                Year = DateTime.Now.Year,
+                FirstTeam = null,
+                SecondTeam = null
+            };
+
+            var result = _repository.Update(playedMatches);
            await _repository.Save();
            return result;
         }

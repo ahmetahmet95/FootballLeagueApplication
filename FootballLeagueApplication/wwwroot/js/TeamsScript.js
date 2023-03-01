@@ -1,5 +1,6 @@
 ﻿var scriptApp = function () {
 
+    document.body.className = "loading";
     renderTable();
     function pageInit() {
 
@@ -30,6 +31,7 @@
                 });
 
                 $("#table1 tbody").html(trows);
+                document.body.className = "";
             },
             error: function (e) {
             }
@@ -51,6 +53,7 @@
             success: function (res) {
 
                 renderTable();
+                document.body.className = "";
             },
             error: function (e) {
             }

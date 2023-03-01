@@ -1,8 +1,9 @@
 ﻿var scriptApp = function () {
 
+    document.body.className = "loading";
     function pageInit() {
-        onLoad();
 
+        onLoad();
     }
 
     function onLoad(){
@@ -24,6 +25,7 @@
                 });
 
                 $("#table1 tbody").html(trows);
+                document.body.className = "";
             },
             error: function (e) {
             }

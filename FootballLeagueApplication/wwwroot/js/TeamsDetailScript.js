@@ -1,11 +1,15 @@
 ﻿var scriptApp = function () {
+
     var globalData;
+    document.body.className = "loading";
+
     function pageInit(options) {
 
         if (options.teamId != 0) {
 
             onLoad(options);
         }
+
 
         $("#createBtn").click(function () {
 
@@ -27,6 +31,7 @@
                     success: function (data) {
                         window.close()
                         window.open("/Home/Teams", '_parent');
+                        document.body.className = "";
                     },
                     error: function (e) {
                         alert("Team alredy exist!");
@@ -51,6 +56,7 @@
                     success: function (data) {
                         window.close()
                         window.open("/Home/Teams", '_parent');
+                        document.body.className = "";
                     },
                     error: function (e) {
                         alert("Team alredy exist!");
@@ -65,9 +71,11 @@
             window.close()
             window.open("/Home/Teams", '_parent');
         });
+        document.body.className = "";
     }
 
     function onLoad(options) {
+
 
         $.ajax({
             url: "https://localhost:7066/api/TeamsApi/GetTeamById/" + options.teamId,
@@ -75,9 +83,10 @@
             dataType: 'json',
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-                debugger;
+
                 globalData = data;
                 $("#name").val(data.name);
+                document.body.className = "";
             },
             error: function (e) {
             }

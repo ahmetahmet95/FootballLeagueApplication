@@ -2,7 +2,8 @@
     ViewData["Title"] = "Teams Detail";
 }
 <h1>@ViewData["Title"]</h1><br/>
- 
+
+<div class="loading-bar"></div>
 <form action="/action_page.php">
     <label for="fname">Team name:</label>
     <input type="text" id="name" name="name"></br></br></><hr></hr>
@@ -15,6 +16,27 @@
 
 @section Styles{
     <style>
+        .loading-bar {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('http://i.stack.imgur.com/FhHRx.gif');
+            background-position: 50% 50%;
+            background-color: rgba(255, 255, 255, 1.0);
+            background-repeat: no-repeat;
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+
+            body.loading .loading-bar {
+                display: block;
+            }
     </style>
 }
 

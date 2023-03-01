@@ -1,5 +1,6 @@
 ﻿var scriptApp = function () {
 
+    document.body.className = "loading";
     function pageInit(options) {
 
         onLoad(options.teamId);
@@ -29,6 +30,7 @@
                         success: function (data) {
                             window.close()
                             window.open("/Home/PlayedMatches", '_parent');
+                            document.body.className = "";
                         },
                         error: function (e) {
                         }
@@ -56,6 +58,7 @@
                         success: function (data) {
                             window.close()
                             window.open("/Home/PlayedMatches", '_parent');
+                            document.body.className = "";
                         },
                         error: function (e) {
                         }
@@ -94,7 +97,7 @@
 
                     onUpdateLoad(id);
                 }
-
+                document.body.className = "";
             },
             error: function (e) {
 
@@ -118,7 +121,7 @@
                     $("#homeTeamPoints").val(this.firstTeamScore).change();
                     $("#guestTeamPoints").val(this.secondTeamScore).change();
                 });
-
+                document.body.className = "";
             },
             error: function (e) {
 

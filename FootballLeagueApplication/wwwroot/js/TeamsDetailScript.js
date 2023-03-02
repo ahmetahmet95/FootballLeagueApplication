@@ -10,7 +10,6 @@
             onLoad(options);
         }
 
-
         $("#createBtn").click(function () {
 
             if (options.teamId == 0) {
@@ -29,12 +28,15 @@
                     contentType: "application/json;charset=utf-8",
                     data: jsonData,
                     success: function (data) {
-                        window.close()
+
+                        window.close();
                         window.open("/Home/Teams", '_parent');
                         document.body.className = "";
                     },
                     error: function (e) {
-                        alert("Team alredy exist!");
+     
+                        document.body.className = "";
+                        errorHandler(e.responseText);
                     }
                 });
             }
@@ -59,7 +61,9 @@
                         document.body.className = "";
                     },
                     error: function (e) {
-                        alert("Team alredy exist!");
+
+                        document.body.className = "";
+                        errorHandler(e.responseText);
                     }
                 });
             }
@@ -89,10 +93,17 @@
                 document.body.className = "";
             },
             error: function (e) {
+
+                document.body.className = "";
+                errorHandler(e.responseText);
             }
         });
     }
 
+    function errorHandler(responseText) {
+
+        toastr.warning(responseText).css("width", "300px");
+    }
 
     return {
         init: function (options) {

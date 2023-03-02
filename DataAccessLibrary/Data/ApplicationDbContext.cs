@@ -28,11 +28,13 @@ namespace DataAccessLibrary
                 .ToTable(tb => tb.HasTrigger("TeamsInsertTrigger"));
 
             modelBuilder.Entity<PlayedMatches>()
-                .ToTable(tb => tb.HasTrigger("PlayedMatchesOperationTrigger"));
+                .ToTable(tb => tb.HasTrigger("PlayedMatchesUpdateTrigger"));
+
+            modelBuilder.Entity<PlayedMatches>()
+                .ToTable(tb => tb.HasTrigger("PlayedMatchesInsertTrigger"));
 
             modelBuilder.Entity<PlayedMatches>()
                 .ToTable(tb => tb.HasTrigger("PlayedMatchesDeleteTrigger"));
-            
         }
     }
 }

@@ -2,15 +2,13 @@
 
     document.body.className = "loading";
     renderTable();
+
     function pageInit() {
 
         $("#playedMatchesCreateBtn").click(function () {
 
             window.open("/Home/PlayedMatchesDetail", "_parent");
         });
-
- 
-
     }
 
     function renderTable() {
@@ -42,6 +40,9 @@
                 document.body.className = "";
             },
             error: function (e) {
+
+                document.body.className = "";
+                errorHandler(e.responseText);
             }
         });
 
@@ -51,7 +52,6 @@
 
         window.open("/Home/PlayedMatchesDetail?id=" + id, "_parent");
     }
-
 
     function onDelete(id) {
 
@@ -64,10 +64,19 @@
 
                 renderTable();
                 document.body.className = "";
+                toastr.success("Deleted successfully!").css("width", "300px");
             },
             error: function (e) {
+
+                document.body.className = "";
+                errorHandler(e.responseText);
             }
         });
+    }
+
+    function errorHandler(responseText) {
+
+        toastr.warning(responseText).css("width", "300px");
     }
 
     return {

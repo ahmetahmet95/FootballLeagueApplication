@@ -34,6 +34,9 @@
                 document.body.className = "";
             },
             error: function (e) {
+
+                document.body.className = "";
+                errorHandler(e.responseText);
             }
         });
     };
@@ -54,10 +57,20 @@
 
                 renderTable();
                 document.body.className = "";
+                toastr.success("Deleted successfully!").css("width", "300px");
+
             },
             error: function (e) {
+
+                document.body.className = "";
+                errorHandler(e.responseText);
             }
         });
+    }
+
+    function errorHandler(responseText) {
+
+        toastr.warning(responseText).css("width", "300px");
     }
 
     return {

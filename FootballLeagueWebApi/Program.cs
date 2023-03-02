@@ -31,10 +31,8 @@ var origins = builder.Configuration.GetSection("Origins").GetChildren().Select(c
 
 app.UseCors(builder => builder
                 .AllowAnyHeader()
-                .WithExposedHeaders("Content-Disposition", "X-Apollo-Editable", "X-Apollo-Version", "X-Filename")
                 .AllowAnyMethod()
                 .AllowCredentials()
-                //.AllowAnyOrigin()
                 .WithOrigins(origins.ToArray())
                 );
 

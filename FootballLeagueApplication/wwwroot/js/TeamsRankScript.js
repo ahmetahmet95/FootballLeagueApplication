@@ -28,8 +28,16 @@
                 document.body.className = "";
             },
             error: function (e) {
+
+                document.body.className = "";
+                errorHandler(e.responseText);
             }
         });
+    }
+
+    function errorHandler(responseText) {
+
+        toastr.warning(responseText).css("width", "300px");
     }
 
     return {

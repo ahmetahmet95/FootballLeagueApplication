@@ -44,6 +44,7 @@ namespace FootballLeagueWebApi.Controllers
         [Route("CreateTeam")]
         public async Task<Teams> CreateTeam([FromBody] TeamsViewModel model)
         {
+
             Teams teams = new Teams()
             {
                 Id = model.Id,

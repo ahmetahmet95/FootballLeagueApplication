@@ -11,7 +11,7 @@
         }
 
         $("#createBtn").click(function () {
-
+  
             if ($("#name").val().length <= 0) {
 
                 toastr.warning("Team name is required!").css("width", "300px");
@@ -47,6 +47,13 @@
                 });
             }
             else {
+
+                if (globalData.name == $("#name").val()) {
+               
+                    window.close()
+                    window.open("/Home/Teams", '_parent');
+                }
+
                 //Update
                 var data = {
                     Id: globalData.id,
@@ -86,7 +93,6 @@
     }
 
     function onLoad(options) {
-
 
         $.ajax({
             url: "https://localhost:7066/api/TeamsApi/GetTeamById/" + options.teamId,

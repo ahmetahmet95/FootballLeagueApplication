@@ -4,16 +4,21 @@ using System.Diagnostics;
 
 namespace FootballLeagueApplication.Controllers
 {
-    public class HomeController : Controller
+    public class TeamsController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<TeamsController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public TeamsController(ILogger<TeamsController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult TeamsRank()
         {
             return View();
         }

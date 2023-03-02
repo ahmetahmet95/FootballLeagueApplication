@@ -3,7 +3,13 @@
 }
 <h1>@ViewData["Title"]</h1>
 <br></br>
-<button type="button" id = "teamCreateBtn"  class="btn btn-outline-primary">Create</button><hr></hr>
+
+<button type="button" id="teamCreateBtn" class="btn btn-outline-info">
+    <i class="fa fa-plus-square" aria-hidden="true"></i>
+    Create
+</button>
+
+<hr></hr>
 <div class="loading-bar"></div>
 <table id="table1" class="table table-bordered table table-condensed table-responsive">
     <thead>
@@ -38,6 +44,10 @@
 
         body.loading .loading-bar {
             display: block;
+        }
+
+        th:first-child {
+            width: 80%
         }
     </style>
 }

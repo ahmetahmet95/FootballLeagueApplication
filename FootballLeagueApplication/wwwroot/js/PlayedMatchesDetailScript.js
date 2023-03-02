@@ -75,12 +75,14 @@
                     }
                 }
                 else {
-                        alert("Both teams cannot be equal!");
+
+                    toastr.warning("Both teams cannot be equal!").css("width", "300px");
+
                 }
             }
         });
 
-        $("#canceBtn").click(function () {
+        $("#cancelBtn").click(function () {
 
             window.open("/Home/PlayedMatches", "_parent");
         });

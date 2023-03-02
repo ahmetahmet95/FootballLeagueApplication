@@ -12,6 +12,12 @@
 
         $("#createBtn").click(function () {
 
+            if ($("#name").val().length <= 0) {
+
+                toastr.warning("Team name is required!").css("width", "300px");
+                return false;
+            }
+
             if (options.teamId == 0) {
 
                 //Create
@@ -56,6 +62,7 @@
                     data: jsonData,
                     contentType: "application/json;charset=utf-8",
                     success: function (data) {
+
                         window.close()
                         window.open("/Home/Teams", '_parent');
                         document.body.className = "";
@@ -70,7 +77,7 @@
            
         });
 
-        $("#canceBtn").click(function () {
+        $("#cancelBtn").click(function () {
 
             window.close()
             window.open("/Home/Teams", '_parent');

@@ -30,8 +30,8 @@
                     trows += "<td>" + val.secondTeamScore + "</td>";
                     trows += "<td>" + val.year + "</td>";
                     trows += "<td>" +
-                        "<button onclick = 'scriptApp.onEdit(" + val.id + ")' class='btn btn-outline-primary'> Edit</button > " +
-                        "<button onclick = 'scriptApp.onDelete(" + val.id + ")' class='btn btn-outline-danger'> Delete</button >" +
+                        "<button onclick = 'scriptApp.onEdit(" + val.id + ")' class='btn btn-outline-primary'><i class='fa fa-pencil-square' aria-hidden='true'></i> Edit</button > " +
+                        "<button onclick = 'scriptApp.onDelete(" + val.id + ")' class='btn btn-outline-danger'><i class='fa fa-trash' aria-hidden='true'></i> Delete</button >" +
                         "</td > ";
                     trows += "</tr>";
                 });

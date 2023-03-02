@@ -2,6 +2,84 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to world cup football league</h1><br></br>
-</div>
+<html lang="en">
+<body>
+
+
+    <!-- Header -->
+    <header class="w3-container w3-red w3-center" style="padding:30px 10px">
+        <h1 class="w3-margin w3-jumbo">Welcome to world cup football league</h1>
+    </header>
+    <br></br>
+
+    <div class="Row">
+        <div class="Column">
+            <div>
+                <div class='child'>
+                    <img class="zoom" src="~/img/messi_vs_mbappe.jpg">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="Column">
+            <div>
+
+                <div class='child'>
+                    <img class="zoom" src="~/img/c_vs_i.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="Column">
+            <div>
+
+                <div class='child'>
+                    <img class="zoom" src="~/img/messi.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='scores'>
+    </div>
+
+
+    @section Styles{
+        <style>
+            .Row {
+                display: table;
+                width: 100%; /*Optional*/
+                table-layout: fixed; /*Optional*/
+            }
+
+            .Column {
+                display: table-cell;
+            }
+
+            .child {
+                display: inline-block;
+                padding: 1rem 1rem;
+            }
+
+            img {
+                width: 367px;
+                height: 330px;
+            }
+
+            .zoom {
+                padding: 50px;
+                transition: transform .2s;
+                width: 400px;
+                height: 400px;
+                margin: 0 auto;
+            }
+
+                .zoom:hover {
+                    -ms-transform: scale(1.2); /* IE 9 */
+                    -webkit-transform: scale(1.2); /* Safari 3-8 */
+                    transform: scale(1.2);
+                }
+        </style>
+    }
+    </body>
+    </html>

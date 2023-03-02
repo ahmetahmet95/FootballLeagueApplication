@@ -6,7 +6,7 @@
 
         $("#teamCreateBtn").click(function () {
 
-            window.open("/Home/TeamsDetail", "_parent");
+            window.open("/Teams/TeamsDetail", "_parent");
         });
     }
 
@@ -43,7 +43,7 @@
 
     function onEdit(id) {
 
-        window.open("/Home/TeamsDetail?id=" + id, "_parent");
+        window.open("/Teams/TeamsDetail?id=" + id, "_parent");
     }
 
     function onDelete(id) {

@@ -7,7 +7,7 @@
 
         $("#playedMatchesCreateBtn").click(function () {
 
-            window.open("/Home/PlayedMatchesDetail", "_parent");
+            window.open("/Teams/PlayedMatchesDetail", "_parent");
         });
     }
 
@@ -50,7 +50,7 @@
 
     function onEdit(id) {
 
-        window.open("/Home/PlayedMatchesDetail?id=" + id, "_parent");
+        window.open("/Teams/PlayedMatchesDetail?id=" + id, "_parent");
     }
 
     function onDelete(id) {

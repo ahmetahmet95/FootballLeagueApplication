@@ -36,7 +36,7 @@
                     success: function (data) {
 
                         window.close();
-                        window.open("/Home/Teams", '_parent');
+                        window.open("/Teams/Teams", '_parent');
                         document.body.className = "";
                     },
                     error: function (e) {
@@ -51,7 +51,7 @@
                 if (globalData.name == $("#name").val()) {
                
                     window.close()
-                    window.open("/Home/Teams", '_parent');
+                    window.open("/Teams/Teams", '_parent');
                 }
 
                 //Update
@@ -71,7 +71,7 @@
                     success: function (data) {
 
                         window.close()
-                        window.open("/Home/Teams", '_parent');
+                        window.open("/Teams/Teams", '_parent');
                         document.body.className = "";
                     },
                     error: function (e) {
@@ -87,7 +87,7 @@
         $("#cancelBtn").click(function () {
 
             window.close()
-            window.open("/Home/Teams", '_parent');
+            window.open("/Teams/Teams", '_parent');
         });
         document.body.className = "";
     }

@@ -32,7 +32,7 @@
                             data: jsonData,
                             success: function (data) {
                                 window.close()
-                                window.open("/Home/PlayedMatches", '_parent');
+                                window.open("/Teams/PlayedMatches", '_parent');
                                 document.body.className = "";
                             },
                             error: function (e) {
@@ -63,7 +63,7 @@
                             contentType: "application/json;charset=utf-8",
                             success: function (data) {
                                 window.close()
-                                window.open("/Home/PlayedMatches", '_parent');
+                                window.open("/Teams/PlayedMatches", '_parent');
                                 document.body.className = "";
                             },
                             error: function (e) {
@@ -84,7 +84,7 @@
 
         $("#cancelBtn").click(function () {
 
-            window.open("/Home/PlayedMatches", "_parent");
+            window.open("/Teams/PlayedMatches", "_parent");
         });
     }
 
@@ -156,8 +156,9 @@
         if (lastVal1 == $("#homeTeamId").val() &&
             lastVal2 == $("#guestTeamId").val() &&
             lastVal3 == $("#homeTeamPoints").val() &&
-            lastVal4 == $("#guestTeamPoints").val()) { 
+            lastVal4 == $("#guestTeamPoints").val()) {
 
+            toastr.warning("Nothing changed!").css("width", "300px");
             return false;
         }
         else {

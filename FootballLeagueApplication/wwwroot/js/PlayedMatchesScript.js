@@ -19,7 +19,7 @@
             dataType: 'json',
             contentType: "application/json;charset=utf-8",
             success: function (res) {
-
+      
                 var trows = "";
                 $.each(res, function (i, val) {
          
@@ -28,6 +28,8 @@
                     trows += "<td>" + val.secondTeam.name + "</td>";
                     trows += "<td>" + val.firstTeamScore + "</td>";
                     trows += "<td>" + val.secondTeamScore + "</td>";
+                    trows += "<td>" + val.firstTeamGoal + "</td>";
+                    trows += "<td>" + val.secondTeamGoal + "</td>";
                     trows += "<td>" + val.year + "</td>";
                     trows += "<td>" +
                         "<button onclick = 'scriptApp.onEdit(" + val.id + ")' class='btn btn-outline-primary'><i class='fa fa-pencil-square' aria-hidden='true'></i> Edit</button > " +

@@ -58,6 +58,8 @@ namespace FootballLeagueWebApi.Controllers
                 FirstTeamScore = model.FirstTeamScore,
                 SecondTeamId = model.SecondTeamId,
                 SecondTeamScore = model.SecondTeamScore,
+                FirstTeamGoal = model.FirstTeamGoal,
+                SecondTeamGoal = model.SecondTeamGoal,
                 CreatedBy = "Admin",
                 CreatedOn = DateTime.Now,
                 UpdatedBy = "Admin",
@@ -81,13 +83,13 @@ namespace FootballLeagueWebApi.Controllers
                 FirstTeamScore = model.FirstTeamScore,
                 SecondTeamId = model.SecondTeamId,
                 SecondTeamScore = model.SecondTeamScore,
+                FirstTeamGoal = model.FirstTeamGoal,
+                SecondTeamGoal = model.SecondTeamGoal,
                 CreatedBy = "Admin",
                 CreatedOn = DateTime.Now,
                 UpdatedBy = "Admin",
                 UpdatedOn = DateTime.Now,
-                Year = DateTime.Now.Year,
-                FirstTeam = null,
-                SecondTeam = null
+                Year = DateTime.Now.Year
             };
 
             var result = _repository.Update(playedMatches);

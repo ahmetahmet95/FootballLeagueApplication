@@ -1,5 +1,5 @@
 ﻿var scriptApp = function () {
-    var lastVal1, lastVal2, lastVal3, lastVal4;
+    var lastVal1, lastVal2, lastVal3, lastVal4, lastVal5, lastVal6;
 
     document.body.className = "loading";
     function pageInit(options) {
@@ -20,7 +20,9 @@
                             FirstTeamId: parseInt($('#homeTeamId').find(":selected").val()),
                             FirstTeamScore: parseInt($('#homeTeamPoints').find(":selected").val()),
                             SecondTeamId: parseInt($('#guestTeamId').find(":selected").val()),
-                            SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val())
+                            SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val()),
+                            FirstTeamGoal: $('#firstTeamGoal').val(),
+                            SecondTeamGoal: $('#secondTeamGoal').val()
                         }
                         var jsonData = JSON.stringify(data);
 
@@ -51,7 +53,9 @@
                             FirstTeamId: parseInt($('#homeTeamId').find(":selected").val()),
                             FirstTeamScore: parseInt($('#homeTeamPoints').find(":selected").val()),
                             SecondTeamId: parseInt($('#guestTeamId').find(":selected").val()),
-                            SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val())
+                            SecondTeamScore: parseInt($('#guestTeamPoints').find(":selected").val()),
+                            FirstTeamGoal: $('#firstTeamGoal').val(),
+                            SecondTeamGoal: $('#secondTeamGoal').val()
                         }
                         var jsonData = JSON.stringify(data);
 
@@ -128,18 +132,19 @@
             contentType: "application/json;charset=utf-8",
             success: function (res) {
 
-                $.each(res, function () {
-                 
-                    $("#homeTeamId").val(this.firstTeam.id).trigger('change');
-                    $("#guestTeamId").val(this.secondTeam.id).trigger('change');
-                    $("#homeTeamPoints").val(this.firstTeamScore).change();
-                    $("#guestTeamPoints").val(this.secondTeamScore).change();
+                $("#homeTeamId").val(res[0].firstTeam.id).trigger('change');
+                $("#guestTeamId").val(res[0].secondTeam.id).trigger('change');
+                $("#homeTeamPoints").val(res[0].firstTeamScore).change();
+                $("#guestTeamPoints").val(res[0].secondTeamScore).change();
+                $("#firstTeamGoal").val(res[0].firstTeamGoal);
+                $("#secondTeamGoal").val(res[0].secondTeamGoal);
 
-                });
                 lastVal1 = $("#homeTeamId").val();
                 lastVal2 = $("#guestTeamId").val();
                 lastVal3 = $("#homeTeamPoints").val();
                 lastVal4 = $("#guestTeamPoints").val();
+                lastVal5 = $("#firstTeamGoal").val();
+                lastVal6 = $("#secondTeamGoal").val();
 
                 document.body.className = "";
             },
@@ -156,7 +161,9 @@
         if (lastVal1 == $("#homeTeamId").val() &&
             lastVal2 == $("#guestTeamId").val() &&
             lastVal3 == $("#homeTeamPoints").val() &&
-            lastVal4 == $("#guestTeamPoints").val()) {
+            lastVal4 == $("#guestTeamPoints").val() &&
+            lastVal5 == $("#firstTeamGoal").val() &&
+            lastVal6 == $("#secondTeamGoal").val()) {
 
             toastr.warning("Nothing changed!").css("width", "300px");
             return false;

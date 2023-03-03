@@ -27,6 +27,12 @@ namespace ModelsLibrary.Models
         public int SecondTeamScore { get; set; }
 
         [Required]
+        public int FirstTeamGoal { get; set; }
+
+        [Required]
+        public int SecondTeamGoal { get; set; }
+
+        [Required]
         public int Year { get; set; }
 
         [Required, MaxLength(50)]

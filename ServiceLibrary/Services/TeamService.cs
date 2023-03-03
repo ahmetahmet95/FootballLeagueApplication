@@ -33,7 +33,9 @@ namespace ServiceLibrary.Services
                    SecondTeam = teamsTwo,
                    FirstTeamScore = played.FirstTeamScore,
                    SecondTeamScore = played.SecondTeamScore,
-                   Year = played.Year
+                   Year = played.Year,
+                   FirstTeamGoal = played.FirstTeamGoal,
+                   SecondTeamGoal = played.SecondTeamGoal
                };
 
             return teams.ToList();
@@ -62,7 +64,9 @@ namespace ServiceLibrary.Services
                    SecondTeam = teamsTwo,
                    FirstTeamScore = played.FirstTeamScore,
                    SecondTeamScore = played.SecondTeamScore,
-                   Year = played.Year
+                   Year = played.Year,
+                   FirstTeamGoal = played.FirstTeamGoal,
+                   SecondTeamGoal = played.SecondTeamGoal
                };
 
             return playedMatches.ToList();

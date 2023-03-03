@@ -34,7 +34,18 @@
             <option value="0">Loss</option>
 
         </select>
-    </div><br></br><br></br><hr></hr>
+    </div><br></br><br></br>
+
+    <div class="col1">
+        <label for="fname">First Team Goal:</label><br></br>
+        <input type="number" id="firstTeamGoal" name="firstTeamGoal" min="0">
+    </div>
+
+    <div class="col2">
+        <label for="field2">Second Team Goal:</label><br></br>
+        <input type="number" id="secondTeamGoal" name="secondTeamGoal" min="0">
+    </div>
+    <br></br><br></br><hr></hr>
 
     <button type="button" id="createBtn" class="btn btn-outline-primary">
         <i class="fa fa-check-circle" aria-hidden="true"></i>
@@ -45,11 +56,14 @@
         <i class="fa fa-times" aria-hidden="true"></i>
         Cancel
     </button>
-
 </form>
 
 @section Styles{
     <style>
+
+        input[type="number"] {
+            width: 150px;
+        }
 
         .col1 {
             float: left;

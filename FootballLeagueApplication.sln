@@ -19,7 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelsLibrary", "ModelsLibr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{939135B7-D1B2-4927-86FB-89B743E3E20E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{69960675-FC82-435F-ABF9-7D18542834CA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql Script", "Sql Script", "{69960675-FC82-435F-ABF9-7D18542834CA}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Documents\DbScript.sql = ..\..\..\Documents\DbScript.sql
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess Layerr", "DataAccess Layerr", "{E82D54B8-DD65-426D-BB4E-2FEC73C79EF6}"
 EndProject

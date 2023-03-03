@@ -38,13 +38,22 @@ namespace FootballLeagueApplication.Controllers
         {
             return View();
         }
+
+        public IActionResult TeamsGroup()
+        {
+            return View();
+        }
         public IActionResult TeamsDetail(int id)
         {
             ViewBag.Id = id;
             return View();
         }
 
-
+        public IActionResult TeamsGroupDetail(int id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

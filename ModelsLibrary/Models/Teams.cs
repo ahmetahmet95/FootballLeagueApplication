@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +28,10 @@ namespace ModelsLibrary.Models
         [Required]
         public DateTime UpdatedOn { get; set; }
 
+        [Required]
+        public int TeamsGroupId { get; set; }
+
+        [ForeignKey("TeamsGroupId")]
+        public virtual TeamsGroup? TeamsGroup { get; set; }
     }
 }

@@ -18,18 +18,20 @@ namespace FootballLeagueWebApi.Controllers
     {
 
         private readonly IRepository<Teams> _repository;
+        private readonly ITeamService _teamService;   
 
-        public TeamsApiController(IRepository<Teams> repository)
+        public TeamsApiController(IRepository<Teams> repository, ITeamService teamService)
         {
             _repository = repository;
+            _teamService = teamService;
         }
 
         [HttpGet]
         [Route("GetTeams")]
-        public async Task<IEnumerable<Teams>> GetTeams()
+        public List<Teams> GetTeams()
         {
-            var result = await _repository.GetAllAsync();
-            return result.OrderByDescending(x => x.Id);
+            var result = _teamService.GetTeams();
+            return result;
         }
 
         [HttpGet]
@@ -37,6 +39,22 @@ namespace FootballLeagueWebApi.Controllers
         public async Task<Teams> GetTeamById(int id)
         {
             var result = await _repository.GetByIdAsync(id);
+            return result;
+        }
+
+        [HttpGet]
+        [Route("GetTeamsGroupForCombo")]
+        public List<TeamsGroup> GetTeamsGroupForCombo()
+        {
+            var result = _teamService.GetTeamsGroup();
+            return result;
+        }
+
+        [HttpGet]
+        [Route("GetTeamsGroupByIdForCombo/{id}")]
+        public List<Teams> GetTeamsGroupByIdForCombo(int id)
+        {
+            var result = _teamService.GetTeamsGroupByIdForTeams(id);
             return result;
         }
 
@@ -52,7 +70,8 @@ namespace FootballLeagueWebApi.Controllers
                 CreatedBy = "Admin",
                 CreatedOn = DateTime.Now,
                 UpdatedBy = "Admin",
-                UpdatedOn = DateTime.Now
+                UpdatedOn = DateTime.Now,
+                TeamsGroupId = model.TeamsGroupId
             };
             var result = await _repository.CreateAsync(teams);
             await _repository.Save();
@@ -68,12 +87,13 @@ namespace FootballLeagueWebApi.Controllers
                 Id = model.Id,
                 Name = model.Name,
                 UpdatedBy = "Admin",
-                UpdatedOn = DateTime.Now
+                UpdatedOn = DateTime.Now,
+                TeamsGroupId = model.TeamsGroupId
             };
 
             var entity = await _repository.GetByIdAsync(teams.Id);
             entity.Name = model.Name;
-
+            entity.TeamsGroupId = model.TeamsGroupId;
             var result = _repository.Update(entity);
             await _repository.Save();
             return result;

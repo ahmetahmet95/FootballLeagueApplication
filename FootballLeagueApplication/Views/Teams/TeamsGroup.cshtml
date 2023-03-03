@@ -1,25 +1,21 @@
 ﻿@{
-    ViewData["Title"] = "Teams Rank";
+    ViewData["Title"] = "Group";
 }
 <h1>@ViewData["Title"]</h1>
 <br></br>
 
-<label for="field2"> Groups: </label>
-
-<select id="teamGroup">
-
-</select>
+<button type="button" id="teamCreateBtn" class="btn btn-outline-info">
+    <i class="fa fa-plus-square" aria-hidden="true"></i>
+    Create
+</button>
 
 <hr></hr>
-
 <div class="loading-bar"></div>
-
 <table id="table1" class="table table-bordered table table-condensed table-responsive">
     <thead>
         <tr>
             <th class="th">Name</th>
-            <th class="th">Total Score</th>
-            <th class="th">Year</th>
+            <th class="th">Operations</th>
         </tr>
     </thead>
     <tbody>
@@ -49,21 +45,22 @@
             body.loading .loading-bar {
                 display: block;
             }
+
+        th:first-child {
+            width: 80%
+        }
     </style>
 }
 
     @section Scripts{
 
-    <script src="~/js/TeamsRankScript.js"></script>
+    <script src="~/js/TeamsGroupScript.js"></script>
 
     <script>
-        jQuery("body").prepend('<div id="preloader">Loading...</div>');
 
         jQuery(document).ready(function () {
-
-
             scriptApp.init();
-            jQuery("#preloader").remove();
+
         });
 
 

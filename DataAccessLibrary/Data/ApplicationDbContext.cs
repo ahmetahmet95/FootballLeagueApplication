@@ -18,6 +18,8 @@ namespace DataAccessLibrary
         public DbSet<Teams> Teams { get; set; }
         public DbSet<TeamsRank> TeamsRank { get; set; }
         public DbSet<PlayedMatches> PlayedMatches { get; set; }
+        public DbSet<TeamsGroup> TeamsGroup { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

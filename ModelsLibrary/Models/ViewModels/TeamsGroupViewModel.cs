@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ModelsLibrary.Models.ViewModels
 {
-    public class TeamsViewModel
+    public class TeamsGroupViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int TeamsGroupId { get; set; }
     }
 }

@@ -6,24 +6,23 @@
 
         $("#teamCreateBtn").click(function () {
 
-            window.open("/Teams/TeamsDetail", "_parent");
+            window.open("/Teams/TeamsGroupDetail", "_parent");
         });
     }
 
     function renderTable() {
 
         $.ajax({
-            url: "https://localhost:7066/api/TeamsApi/GetTeams",
+            url: "https://localhost:7066/api/TeamsGroupApi/GetTeamsGroup",
             type: 'GET',
             dataType: 'json',
             contentType: "application/json;charset=utf-8",
             success: function (res) {
-              
+
                 var trows = "";
-                $.each(res, function (i,val) {
+                $.each(res, function (i, val) {
                     trows += "<tr id=" + val.id + ">";
                     trows += "<td>" + val.name + "</td>";
-                    trows += "<td>" + val.teamsGroup.name + "</td>";
                     trows += "<td>" +
                         "<button onclick = 'scriptApp.onEdit(" + val.id + ")' class='btn btn-outline-primary'> <i class='fa fa-pencil-square' aria-hidden='true'></i> Edit</button > " +
                         "<button onclick = 'scriptApp.onDelete(" + val.id + ")' class='btn btn-outline-danger'><i class='fa fa-trash' aria-hidden='true'></i> Delete</button >" +
@@ -44,13 +43,13 @@
 
     function onEdit(id) {
 
-        window.open("/Teams/TeamsDetail?id=" + id, "_parent");
+        window.open("/Teams/TeamsGroupDetail?id=" + id, "_parent");
     }
 
     function onDelete(id) {
 
         $.ajax({
-            url: "https://localhost:7066/api/TeamsApi/DeleteTeamById/" + id,
+            url: "https://localhost:7066/api/TeamsGroupApi/DeleteTeamById/" + id,
             type: 'DELETE',
             dataType: 'json',
             contentType: "application/json;charset=utf-8",

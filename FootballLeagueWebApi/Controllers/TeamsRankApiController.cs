@@ -20,10 +20,10 @@ namespace FootballLeagueWebApi.Controllers
         #region TeamsRank
 
         [HttpGet]
-        [Route("GetTeamsRank")]
-        public List<TeamsRank> GetTeamsRank()
+        [Route("GetTeamsRank/{id}")]
+        public List<TeamsRank> GetTeamsRank(int id)
         {
-            var result = _teamService.GetTeamsRank();
+            var result = _teamService.GetTeamsRank(id);
             return result;
         }
 

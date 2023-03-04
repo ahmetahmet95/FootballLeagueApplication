@@ -21,10 +21,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql Script", "Sql Script", "{69960675-FC82-435F-ABF9-7D18542834CA}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\Documents\DbScript.sql = ..\..\..\Documents\DbScript.sql
+		..\..\..\Documents\DataBaseScript.sql = ..\..\..\Documents\DataBaseScript.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess Layerr", "DataAccess Layerr", "{E82D54B8-DD65-426D-BB4E-2FEC73C79EF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{B4BDC4E5-EC96-4CB3-9F49-9A3DAA9E1FF7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Documents\FootballLeagueDocumentation.pdf = ..\..\..\Documents\FootballLeagueDocumentation.pdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +68,7 @@ Global
 		{1A95B598-BFEC-4543-9293-4B63BD747C17} = {E82D54B8-DD65-426D-BB4E-2FEC73C79EF6}
 		{3B105331-7515-4692-A24F-6C887F818CDB} = {E82D54B8-DD65-426D-BB4E-2FEC73C79EF6}
 		{69960675-FC82-435F-ABF9-7D18542834CA} = {939135B7-D1B2-4927-86FB-89B743E3E20E}
+		{B4BDC4E5-EC96-4CB3-9F49-9A3DAA9E1FF7} = {939135B7-D1B2-4927-86FB-89B743E3E20E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEE6CE1D-24AC-49CC-B593-794468F470CD}

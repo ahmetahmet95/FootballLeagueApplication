@@ -35,14 +35,6 @@ namespace FootballLeagueWebApi.Controllers
         }
 
         [HttpGet]
-        [Route("GetTeamById/{id}")]
-        public async Task<Teams> GetTeamById(int id)
-        {
-            var result = await _repository.GetByIdAsync(id);
-            return result;
-        }
-
-        [HttpGet]
         [Route("GetTeamsGroupForCombo")]
         public List<TeamsGroup> GetTeamsGroupForCombo()
         {
